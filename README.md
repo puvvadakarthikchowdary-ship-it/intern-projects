@@ -1,23 +1,4 @@
-bashcd ~/intern_projects
-nano README.md
-Pata content anni Ctrl+K press chesi delete cheyyi, tarvata idi paste cheyyi:
-markdown# Internship Projects — Synopsys & AMD
 
-RTL design, EDA synthesis, AI/ML, and functional verification projects.
-Built for: Synopsys India Apprentice Program | AMD CPU Performance Intern
-
----
-
-## Projects
-
-| # | Project | Tech | Company |
-|---|---------|------|---------|
-| 1 | RTL IPC Tracker — 5-stage pipeline CPU | SystemVerilog, Python | Both |
-| 2 | EDA Synthesis Flow — ALU → Yosys → gates | Verilog, Yosys, Python | Synopsys |
-| 3 | AI Anomaly Detector — CPU perf counters | Python, scikit-learn | AMD |
-| 4 | SV Verification Testbench — UVM-lite | SystemVerilog, Python | Synopsys |
-
----
 
 ## Project 1 — RTL IPC Tracker
 
