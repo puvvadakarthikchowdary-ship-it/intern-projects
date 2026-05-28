@@ -1,0 +1,8 @@
+# Yosys synthesis script
+read_verilog alu.v
+hierarchy -check -top alu
+synth -top alu
+techmap
+opt_clean -purge
+write_json netlist.json
+show -format dot -prefix netlist_graph -notitle alu
