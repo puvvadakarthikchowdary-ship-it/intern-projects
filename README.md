@@ -40,7 +40,7 @@ A 5-stage pipelined CPU implemented in SystemVerilog. Three different workloads 
 ### Key Insight
 IPC dropped 51% from ALU-heavy to Memory-heavy workload.
 Root cause: RAW (Read After Write) data hazards.
-Fix: Add Forwarding Unit + 2-bit Branch Predictor → IPC recovers to ~0.85
+Fix: Add Forwarding Unit + 2-bit Branch Predictor — IPC recovers to ~0.85
 
 ### How to Run
 cd p1_ipc_tracker && python3 analyze_ipc.py
@@ -79,7 +79,7 @@ cd p2_eda_synthesis && python3 parse_metrics.py
 ## Project 3 — AI Anomaly Detector
 
 ### What is this?
-Synthetic CPU performance counter data is generated and fed into an Isolation Forest ML model to automatically detect performance anomalies. Directly aligned with AMD JD requirement of AI-driven performance infrastructure.
+Synthetic CPU performance counter data is generated and fed into an Isolation Forest ML model to automatically detect performance anomalies. Directly aligned with AMD requirement of AI-driven performance infrastructure.
 
 ### Features Used
 | Feature | Description |
@@ -109,10 +109,52 @@ Synthetic CPU performance counter data is generated and fed into an Isolation Fo
 
 ### Key Insight
 Model detects CPU anomalies without labeled training data.
-Replaces ~2 hours of manual performance triage per run.
+Replaces 2 hours of manual performance triage per run.
 
 ### How to Run
 cd p3_ai_anomaly && python3 generate_data.py && python3 train_model.py && python3 visualize.py
+
+---
+
+## Project 4 — SV Verification Testbench
+
+### What is this?
+A UVM-lite verification environment in SystemVerilog with a self-checking scoreboard and constrained-random stimulus. Tests an 8-bit ALU DUT with directed and random test cases.
+
+### Verification Components
+| Component | Purpose |
+|---|---|
+| alu_dut.sv | DUT — 8-bit ALU with 8 operations |
+| tb_alu.sv | Testbench with scoreboard and coverage |
+| cov_report.py | HTML coverage report generator |
+
+### Test Results
+| Metric | Value |
+|---|---|
+| Total Tests | 2005 |
+| Passed | 2005 |
+| Failed | 0 |
+| Pass Rate | 100% |
+| Functional Coverage | 93.5% |
+
+### Opcode Coverage
+| Opcode | Tests Run |
+|---|---|
+| ADD | 269 |
+| SUB | 234 |
+| AND | 257 |
+| OR | 234 |
+| XOR | 247 |
+| SHL | 274 |
+| SHR | 232 |
+| NOT | 253 |
+
+### Key Insight
+2005 constrained-random tests with 100% pass rate and 93.5% functional coverage.
+Self-checking scoreboard automatically compares DUT output against golden reference model.
+
+### How to Run
+cd p4_sv_testbench && python3 cov_report.py
 
 ---
 
